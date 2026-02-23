@@ -1,11 +1,11 @@
 # API 레퍼런스
 
-`web/app.py` FastAPI 서버의 엔드포인트 상세 명세입니다.
+`web/` FastAPI 서버의 엔드포인트 상세 명세입니다.
 
 ## 서버 실행
 
 ```bash
-uv run python web/app.py
+uv run python -m web.app
 # http://localhost:8000
 ```
 

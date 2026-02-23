@@ -37,7 +37,7 @@ Neo4j 그래프 데이터베이스와 Ollama 로컬 LLM을 활용한 **뉴스 �
 | STEP 1 | `notebooks/01_DataScrapping.ipynb` | 네이버 뉴스 6개 카테고리 크롤링 |
 | STEP 2 | `notebooks/02_GraphBuilder.ipynb` | Neo4j 그래프 DB 구축 (Recursive Chunking) |
 | STEP 3 | `notebooks/03_ToolsRetriever.ipynb` | 임베딩 생성 + GraphRAG 검색 파이프라인 |
-| Web | `python web/app.py` | 그래프 시각화 + AI 검색 웹 서버 |
+| Web | `uv run python -m web.app` | 그래프 시각화 + AI 검색 웹 서버 |
 
 ## 빠른 시작
 
@@ -73,7 +73,7 @@ ollama pull bona/bge-m3-korean
 # (notebooks/ 폴더의 01 → 02 → 03 순서)
 
 # 웹 시각화 서버 실행
-uv run python web/app.py
+uv run python -m web.app
 # http://localhost:8000 접속
 ```
 
@@ -97,9 +97,13 @@ Knowledge/
 │   ├── 01_DataScrapping.ipynb    # 네이버 뉴스 크롤링
 │   ├── 02_GraphBuilder.ipynb     # Neo4j 그래프 구축
 │   └── 03_ToolsRetriever.ipynb   # GraphRAG 검색 시스템
-├── web/                          # 웹 시각화 서버
-│   ├── app.py                    # FastAPI 백엔드
-│   └── index.html                # 프론트엔드 UI
+├── web/                          # 웹 시각화 서버 (FastAPI)
+│   ├── app.py                    # FastAPI 엔트리포인트 + 라우트
+│   ├── config.py                 # 환경변수, 설정값
+│   ├── rag.py                    # LLM, Retriever, 프롬프트 초기화
+│   ├── parser.py                 # 응답 파싱, Cypher 캡처 유틸리티
+│   └── static/
+│       └── index.html            # 프론트엔드 UI
 ├── docs/                         # 문서
 │   ├── guides/                   # 상세 가이드
 │   │   ├── 01_환경설정.md

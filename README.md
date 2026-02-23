@@ -98,10 +98,15 @@ Knowledge/
 │   ├── 02_GraphBuilder.ipynb     # Neo4j 그래프 구축
 │   └── 03_ToolsRetriever.ipynb   # GraphRAG 검색 시스템
 ├── web/                          # 웹 시각화 서버 (FastAPI)
-│   ├── app.py                    # FastAPI 엔트리포인트 + 라우트
+│   ├── app.py                    # FastAPI 앱 생성, 미들웨어, 라우터 등록
 │   ├── config.py                 # 환경변수, 설정값
-│   ├── rag.py                    # LLM, Retriever, 프롬프트 초기화
-│   ├── parser.py                 # 응답 파싱, Cypher 캡처 유틸리티
+│   ├── routers/                  # API 라우트 핸들러
+│   │   ├── graph.py              # GET /graph - 그래프 데이터 조회
+│   │   ├── query.py              # POST /query - GraphRAG 검색
+│   │   └── health.py             # GET /health - 서버 상태 확인
+│   ├── services/                 # 비즈니스 로직
+│   │   ├── rag_service.py        # LLM, Retriever, 프롬프트 초기화
+│   │   └── parser.py             # 응답 파싱, Cypher 캡처 유틸리티
 │   └── static/
 │       └── index.html            # 프론트엔드 UI
 ├── docs/                         # 문서

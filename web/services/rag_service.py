@@ -133,7 +133,6 @@ def initialize():
         neo4j_database=NEO4J_DB,
     )
 
-    # Tool 변환
     vector_tool = vector_retriever.convert_to_tool(
         name="vector_retriever",
         description=(
@@ -167,7 +166,6 @@ def initialize():
         tools=[vector_tool, vector_cypher_tool, text2cypher_tool],
     )
 
-    # 프롬프트 템플릿
     prompt_list = RagTemplate(
         template="""당신은 Neo4j 그래프 데이터베이스에 저장된 뉴스 기사만을 검색하여 답변하는 어시스턴트입니다.
 

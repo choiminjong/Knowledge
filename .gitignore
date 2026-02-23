@@ -1,0 +1,21 @@
+# Environment
+.env
+.venv/
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated data
+*.xlsx
+
+# Temp / demo files
+temp/
+index.html
+index2.html
+!/web/index.html

@@ -1,0 +1,25 @@
+[project]
+name = "knowledge-graphrag"
+version = "0.1.0"
+description = "Neo4j GraphRAG 기반 뉴스 기사 검색 및 요약 시스템"
+requires-python = ">=3.12"
+
+dependencies = [
+    # GraphRAG core
+    "neo4j-graphrag[ollama]",
+    "ollama",
+    "python-dotenv",
+    # Web scraping
+    "selenium",
+    "webdriver-manager",
+    "undetected-chromedriver",
+    # Data processing
+    "pandas",
+    "openpyxl",
+    # Web server
+    "fastapi",
+    "uvicorn[standard]",
+    # Notebook
+    "ipykernel",
+    "jupyter",
+]

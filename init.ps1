@@ -33,19 +33,6 @@ if ($LASTEXITCODE -eq 0) {
 Write-Host ""
 if (Get-Command ollama -ErrorAction SilentlyContinue) {
     Write-Host "[OK] Ollama 설치됨" -ForegroundColor Green
-    $models = ollama list 2>&1
-    if ($models -match "qwen3:8b-q4_K_M") {
-        Write-Host "[OK] qwen3:8b-q4_K_M 모델 있음" -ForegroundColor Green
-    } else {
-        Write-Host "[!] LLM 모델 다운로드가 필요합니다:" -ForegroundColor Yellow
-        Write-Host "     ollama pull qwen3:8b-q4_K_M" -ForegroundColor White
-    }
-    if ($models -match "bge-m3-korean") {
-        Write-Host "[OK] bona/bge-m3-korean 모델 있음" -ForegroundColor Green
-    } else {
-        Write-Host "[!] Embedding 모델 다운로드가 필요합니다:" -ForegroundColor Yellow
-        Write-Host "     ollama pull bona/bge-m3-korean" -ForegroundColor White
-    }
 } else {
     Write-Host "[!] Ollama가 설치되어 있지 않습니다." -ForegroundColor Yellow
     Write-Host "     https://ollama.ai 에서 설치하세요" -ForegroundColor White
@@ -58,7 +45,7 @@ Write-Host ""
 Write-Host "다음 단계:" -ForegroundColor White
 Write-Host "  1. .env 파일에서 NEO4J_PASSWORD 설정" -ForegroundColor Gray
 Write-Host "  2. Neo4j Desktop 실행 및 DB 시작" -ForegroundColor Gray
-Write-Host "  3. Ollama 모델 다운로드 (위 안내 참고)" -ForegroundColor Gray
+Write-Host "  3. .env의 OLLAMA_MODEL에 맞는 모델 다운로드 (ollama pull <모델명>)" -ForegroundColor Gray
 Write-Host "  4. notebooks/ 폴더의 노트북을 01 -> 02 -> 03 순서로 실행" -ForegroundColor Gray
 Write-Host "  5. 웹 서버: uv run python web/app.py" -ForegroundColor Gray
 Write-Host ""
